@@ -17,3 +17,23 @@
 
 ext.dockerImageName = 'smilepy3action'
 apply from: '../gradle/docker.gradle'
+
+
+
+dependencies {
+    project(':lch')
+}
+
+prepDocker.doLast {
+    copy{
+        from("${project(':lch').projectDir}/dist"){
+            include "*.whl"
+        }
+        println("copy ${project(':lch').projectDir}dist/lch*.whl to ${project.projectDir}")
+        into("${project.projectDir}")
+        rename("(.*)\\.whl","dep.whl")
+    }
+    println("Done with prep")
+}
+
+//TODO: build lch module and copy over to this prior to docker build 

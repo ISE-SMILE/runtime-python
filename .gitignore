@@ -70,3 +70,4 @@ tests/**/python_virtualenv_invalid_main/virtualenv/
 build/
 dist/
 *.egg-info
+/pythonAction/dep.whl

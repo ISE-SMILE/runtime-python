@@ -1,0 +1,25 @@
+
+
+task build(type:Exec) {
+    workingDir '.'
+    commandLine '/usr/bin/python3','setup.py', 'bdist_wheel', '--universal'
+
+    //store the output instead of printing to the console:
+//    standardOutput = new ByteArrayOutputStream()
+//
+//    //extension method stopTomcat.output() can be used to obtain the output:
+//    ext.output = {
+//        return standardOutput.toString()
+//    }
+}
+
+task clean(type:Delete) {
+    delete "${project(':lch').projectDir}/build"
+    println "${project(':lch').projectDir}/build"
+    delete "${project(':lch').projectDir}/dist"
+    println "${project(':lch').projectDir}/dist"
+    delete "${project(':lch').projectDir}/lch.egg-info"
+    println "${project(':lch').projectDir}/lch.egg-info"
+    delete "${project(':lch').projectDir}/.eggs"
+    println "${project(':lch').projectDir}/.eggs"
+}

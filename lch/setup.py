@@ -1,8 +1,9 @@
 import setuptools
 
 setuptools.setup(
-    name="life-cycle-hooks",
+    name="lch",
     version="0.0.1",
+    setup_requires=['wheel'],
     author="Sebastian Werner",
     author_email="werner@tu-berlin.de",
     description="A small life-cycle-hooks api for smile-openwhisk",

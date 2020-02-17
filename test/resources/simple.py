@@ -1,7 +1,5 @@
 #! /usr/bin/python
 
-from lch import *
-
 @onRun
 def run(args):
     print("run")

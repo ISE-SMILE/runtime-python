@@ -41,8 +41,10 @@ RUN pip install \
     virtualenv==16.0.0 \
     twisted==18.7.0
 
+ADD dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
+RUN pip install /build/lch-0.0.1-py2.py3-none-any.whl
+
 ENV FLASK_PROXY_PORT 8080
-ADD
 RUN mkdir -p /pythonAction
 ADD pythonrunner.py /pythonAction/
 RUN rm -rf /action

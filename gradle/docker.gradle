@@ -59,7 +59,12 @@ if(project.hasProperty('dockerBuildArgs')) {
     }
 }
 
+task prepDocker {
+
+}
+
 task distDocker {
+    dependsOn(prepDocker)
     doLast {
         def start = new Date()
         def cmd = dockerBinary + dockerBuildArg + ['-t', dockerImageName, project.buildscript.sourceFile.getParentFile().getAbsolutePath()]

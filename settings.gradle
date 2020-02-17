@@ -17,7 +17,7 @@
 
 
 include 'pythonAction'
-
+include 'lch'
 
 rootProject.name = 'runtime-python'
 
