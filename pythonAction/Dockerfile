@@ -18,28 +18,30 @@
 # Dockerfile for python actions, overrides and extends ActionRunner from actionProxy
 FROM smileproject/lifecycleskeleton
 
-RUN apk add --no-cache \
-        bzip2-dev \
+Run apt-get update &&apt-get upgrade -y
+RUN apt-get install -y \
+        bzip2\
         gcc \
         libc-dev \
         libxslt-dev \
         libxml2-dev \
         libffi-dev \
-        linux-headers \
-        openssl-dev
-
+        openssl\
+        linux-headers-amd64 \
+        python3-twisted
+#apt upgrade --fix-missing && apt install linux-headers-$(uname -r)
+        
 # Install common modules for python
 RUN pip install \
-    beautifulsoup4==4.6.3 \
-    httplib2==0.11.3 \
-    kafka_python==1.4.3 \
-    lxml==4.2.5 \
-    python-dateutil==2.7.3 \
-    requests==2.19.1 \
-    scrapy==1.5.1 \
-    simplejson==3.16.0 \
-    virtualenv==16.0.0 \
-    twisted==18.7.0
+    beautifulsoup4 \
+    httplib2\
+    kafka_python \
+    lxml \
+    python-dateutil \
+    requests \
+    scrapy \
+    simplejson \
+    virtualenv 
 
 ADD dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
 RUN pip install /build/lch-0.0.1-py2.py3-none-any.whl
