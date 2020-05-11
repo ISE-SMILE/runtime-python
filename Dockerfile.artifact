@@ -55,7 +55,7 @@ RUN pip install \
     simplejson \
     virtualenv 
 
-COPY --from=bulid dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
+COPY --from=build dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
 RUN pip install /build/lch-0.0.1-py2.py3-none-any.whl
 
 ENV FLASK_PROXY_PORT 8080
