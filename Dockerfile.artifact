@@ -16,11 +16,11 @@
 #
 
 # Dockerfile for python actions, overrides and extends ActionRunner from actionProxy
-FROM gradle AS build
+FROM python:slim AS build
   
-COPY --chown=gradle:gradle . /home/gradle/src
+COPY  . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build
+RUN ./gradlew build
 RUN ls /home/gradle/src
 
 
