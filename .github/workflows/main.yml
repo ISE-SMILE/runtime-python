@@ -18,8 +18,7 @@ jobs:
         env:
           USERNAME: ${{ secrets.DOCKER_USER }}
           PASSWORD: ${{ secrets.DOCKER_KEY }}
-          BUILD_PATH: "./pythonAction/" 
-          DOCKERFILE: "pythonAction/Dockerfile"
+          DOCKERFILE: "Dockerfile.artifact"
           IMAGE_NAME: "smileproject/smilepy3action"
           TAG_NAME: "0.0.1"
           LATEST: "true"
