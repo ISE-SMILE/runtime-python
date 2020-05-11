@@ -22,6 +22,8 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build
 RUN ls /home/gradle/src
+
+
 FROM smileproject/lifecycleskeleton
 
 Run apt-get update &&apt-get upgrade -y
@@ -49,12 +51,12 @@ RUN pip install \
     simplejson \
     virtualenv 
 
-ADD --from=bulid dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
+COPY --from=bulid dep.whl /build/lch-0.0.1-py2.py3-none-any.whl
 RUN pip install /build/lch-0.0.1-py2.py3-none-any.whl
 
 ENV FLASK_PROXY_PORT 8080
 RUN mkdir -p /pythonAction
-ADD pythonrunner.py /pythonAction/
+ADD pythonAction/pythonrunner.py /pythonAction/
 RUN rm -rf /action
 RUN mkdir /action
 
