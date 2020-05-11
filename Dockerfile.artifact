@@ -20,7 +20,9 @@ FROM gradle AS build
   
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN apt-get update && apt-get install -y python3
+RUN apt-get update && apt-get install -y \
+                      python3 \
+                      pip
 RUN pip install setuptools
 RUN gradle build
 RUN ls /home/gradle/src
