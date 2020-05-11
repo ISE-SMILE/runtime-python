@@ -21,8 +21,7 @@ FROM gradle AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN apt-get update && apt-get install -y \
-                      python3 \
-                      python3-pip
+                      python3-twisted
 RUN pip install setuptools
 RUN gradle build
 RUN ls /home/gradle/src
